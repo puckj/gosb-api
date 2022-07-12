@@ -10,7 +10,6 @@ import { UsersModule } from './users/users.module';
       imports: [ConfigModule],
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        console.log(configService.get('DB_DATABASE'));
         return {
           type: 'postgres',
           // synchronize: true,
