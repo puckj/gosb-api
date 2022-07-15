@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString,IsOptional } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional } from 'class-validator';
 
 export class MemberLoginDto {
   @IsString()
@@ -15,15 +15,15 @@ export class MemberLoginDto {
 }
 
 export class MemberLoginByEmailDto {
-    @IsString()
-    @IsNotEmpty()
-    email: string;
+  @IsString()
+  @IsNotEmpty()
+  email: string;
 
-    @IsString()
-    @IsNotEmpty()
-    encrypted_password:string;
+  @IsString()
+  @IsNotEmpty()
+  encrypted_password: string;
 
-    @IsString()
-    @IsOptional()
-    p_fcm_regist_token: string | null;
+  @IsString()
+  @IsOptional()
+  p_fcm_regist_token: string | null;
 }

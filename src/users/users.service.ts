@@ -15,14 +15,15 @@ export class UsersService {
         null
     );`;
     // console.log(query);
-    return this.dataSource.query(query)
-      .then((result:any) => {
+    return this.dataSource
+      .query(query)
+      .then((result: any) => {
         // console.log(result,'RESULT');
-        return returnMessage.success(result)
+        return returnMessage.success(result);
       })
-      .catch((error:any) => {
+      .catch((error: any) => {
         // console.error(error,'ERROR');
-        return returnMessage.errorFromDatabase(error)
+        return returnMessage.errorFromDatabase(error);
       });
   }
   async memberLoginByEmail(memberLoginByEmailDto: MemberLoginByEmailDto) {
@@ -33,8 +34,9 @@ export class UsersService {
         null,
         null
     );`;
-    return this.dataSource.query(query)
-    .then((result:any) => returnMessage.success(result))
-    .catch((error:any) => returnMessage.errorFromDatabase(error));
+    return this.dataSource
+      .query(query)
+      .then((result: any) => returnMessage.success(result))
+      .catch((error: any) => returnMessage.errorFromDatabase(error));
   }
 }
