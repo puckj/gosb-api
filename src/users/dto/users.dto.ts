@@ -1,4 +1,11 @@
-import { IsNotEmpty, IsString, IsOptional, IsEmail, IsNumber, NotEquals, ValidateIf } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsString,
+  IsOptional,
+  IsEmail,
+  IsNumber,
+  ValidateIf,
+} from 'class-validator';
 
 export class MemberLoginDto {
   @IsString()
@@ -29,67 +36,66 @@ export class MemberLoginByEmailDto {
 }
 
 export class MemberLogoutDto {
-    @IsString()
-    @IsNotEmpty()
-    member_ukey: string;
+  @IsString()
+  @IsNotEmpty()
+  member_ukey: string;
 }
 
 export class CreateCustomerDto {
-    @IsString()
-    @IsNotEmpty()
-    usernames: string
+  @IsString()
+  @IsNotEmpty()
+  usernames: string;
 
-    @IsString()
-    @IsNotEmpty()
-    encrypted_password: string
+  @IsString()
+  @IsNotEmpty()
+  encrypted_password: string;
 
-    @IsString()
-    // @IsOptional(null)
-    @ValidateIf((object: any, value: any) => value !== null)
-    birthday: string | null
+  @IsString()
+  // @IsOptional(null)
+  @ValidateIf((object: any, value: any) => value !== null)
+  birthday: string | null;
 
-    @IsString()
-    @IsNotEmpty()
-    @IsEmail()
-    email: string
+  @IsString()
+  @IsNotEmpty()
+  @IsEmail()
+  email: string;
 
-    // @IsString()
-    // @ValidateIf((object: any, value: any) => value !== null)
-    // citizen_id: string | null
+  // @IsString()
+  // @ValidateIf((object: any, value: any) => value !== null)
+  // citizen_id: string | null
 
-    // @IsNumber()
-    // @ValidateIf((object: any, value: any) => value !== null)
-    // gender_id: number | null
+  // @IsNumber()
+  // @ValidateIf((object: any, value: any) => value !== null)
+  // gender_id: number | null
 
-    // @IsString()
-    // line_id: string | null
+  // @IsString()
+  // line_id: string | null
 
-    // @IsString()
-    // th_name: string | null
-    
-    // @IsString()
-    // th_first_name: string | null
+  // @IsString()
+  // th_name: string | null
 
-    // @IsString()
-    // th_mid_name: string | null
+  // @IsString()
+  // th_first_name: string | null
 
-    // @IsString()
-    // th_last_name: string | null
+  // @IsString()
+  // th_mid_name: string | null
 
-    // @IsString()
-    // en_name: string | null
+  // @IsString()
+  // th_last_name: string | null
 
-    // @IsString()
-    // en_first_name: string | null
+  // @IsString()
+  // en_name: string | null
 
-    // @IsString()
-    // en_mid_name: string | null
+  // @IsString()
+  // en_first_name: string | null
 
-    // @IsString()
-    // en_last_name: string | null
+  // @IsString()
+  // en_mid_name: string | null
 
-    // @IsString()
-    // @IsNotEmpty()
-    // p_phone_number: string
+  // @IsString()
+  // en_last_name: string | null
+
+  // @IsString()
+  // @IsNotEmpty()
+  // p_phone_number: string
 }
-  

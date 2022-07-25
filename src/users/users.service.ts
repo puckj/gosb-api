@@ -1,7 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import ReturnMessage from '../functions/returnMessage';
+import ReturnMessage from '../functions/ReturnMessage';
 import { DataSource } from 'typeorm';
-import { CreateCustomerDto, MemberLoginByEmailDto, MemberLoginDto, MemberLogoutDto } from './dto/users.dto';
+import {
+  CreateCustomerDto,
+  MemberLoginByEmailDto,
+  MemberLoginDto,
+  MemberLogoutDto,
+} from './dto/users.dto';
 
 @Injectable()
 export class UsersService {
@@ -16,9 +21,9 @@ export class UsersService {
     );`;
     // console.log(query);
     return this.dataSource
-    .query(query)
-    .then((result: any) => ReturnMessage.success(result))
-    .catch((error: any) => ReturnMessage.errorFromDatabase(error));
+      .query(query)
+      .then((result: any) => ReturnMessage.success(result))
+      .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
   async memberLoginByEmail(memberLoginByEmailDto: MemberLoginByEmailDto) {
     const query = `CALL c_member_login_by_email(
@@ -45,8 +50,7 @@ export class UsersService {
       .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
   async createCustomer(createCustomerDto: CreateCustomerDto) {
-    console.log(createCustomerDto,' tesssss5555');
-    
+    console.log(createCustomerDto, ' TESSSSST');
     // const query = `CALL c_create_customer(
     //     null,
     //     null

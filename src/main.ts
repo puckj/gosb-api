@@ -7,16 +7,16 @@ import {
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import {
-    utilities as nestWinstonModuleUtilities,
-    WinstonModule,
-  } from 'nest-winston';
+  utilities as nestWinstonModuleUtilities,
+  WinstonModule,
+} from 'nest-winston';
 import * as winston from 'winston';
 import 'winston-daily-rotate-file';
 
 async function bootstrap() {
   const logger = new Logger('Main', { timestamp: true });
   const port = process.env.LISTEN_PORT;
-  const app = await NestFactory.create(AppModule,{
+  const app = await NestFactory.create(AppModule, {
     cors: true,
     logger: WinstonModule.createLogger({
       transports: [
