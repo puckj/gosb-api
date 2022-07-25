@@ -26,10 +26,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
     }),
     UsersModule,
     AuthModule,
-    // forwardRef(() => UsersModule),
   ],
-  // controllers: [],
-  // providers: [],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {

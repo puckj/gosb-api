@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import returnMessage from 'src/functions/returnMessage';
 import { DataSource } from 'typeorm';
-import { MemberLoginByEmailDto, MemberLoginDto } from './dto/users.dto';
+import { CreateCustomerDto, MemberLoginByEmailDto, MemberLoginDto, MemberLogoutDto } from './dto/users.dto';
 
 @Injectable()
 export class UsersService {
@@ -16,15 +16,9 @@ export class UsersService {
     );`;
     // console.log(query);
     return this.dataSource
-      .query(query)
-      .then((result: any) => {
-        // console.log(result,'RESULT');
-        return returnMessage.success(result);
-      })
-      .catch((error: any) => {
-        // console.error(error,'ERROR');
-        return returnMessage.errorFromDatabase(error);
-      });
+    .query(query)
+    .then((result: any) => returnMessage.success(result))
+    .catch((error: any) => returnMessage.errorFromDatabase(error));
   }
   async memberLoginByEmail(memberLoginByEmailDto: MemberLoginByEmailDto) {
     const query = `CALL c_member_login_by_email(
@@ -38,5 +32,28 @@ export class UsersService {
       .query(query)
       .then((result: any) => returnMessage.success(result))
       .catch((error: any) => returnMessage.errorFromDatabase(error));
+  }
+  async memberLogout(memberLogoutDto: MemberLogoutDto) {
+    const query = `CALL c_member_logout(
+        '${memberLogoutDto.member_ukey}',
+        null,
+        null
+    );`;
+    return this.dataSource
+      .query(query)
+      .then((result: any) => returnMessage.success(result))
+      .catch((error: any) => returnMessage.errorFromDatabase(error));
+  }
+  async createCustomer(createCustomerDto: CreateCustomerDto) {
+    console.log(createCustomerDto);
+    
+    // const query = `CALL c_create_customer(
+    //     null,
+    //     null
+    // );`;
+    // return this.dataSource
+    //   .query(query)
+    //   .then((result: any) => returnMessage.success(result))
+    //   .catch((error: any) => returnMessage.errorFromDatabase(error));
   }
 }

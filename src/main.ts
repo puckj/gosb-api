@@ -57,13 +57,11 @@ async function bootstrap() {
     }),
   });
   app.setGlobalPrefix('api');
-  //   app.useGlobalPipes(new ValidationPipe());
-  // console.log('tessssst');
   app.useGlobalPipes(
     new ValidationPipe({
       exceptionFactory: (validationErrors: ValidationError[] = []) => {
-        // logger.error(validationErrors);
-        console.error(validationErrors);
+        logger.error(validationErrors);
+        // console.error(validationErrors);
         return new BadRequestException(validationErrors);
       },
     }),
