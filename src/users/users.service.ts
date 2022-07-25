@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import returnMessage from 'src/functions/returnMessage';
+import ReturnMessage from '../functions/returnMessage';
 import { DataSource } from 'typeorm';
 import { CreateCustomerDto, MemberLoginByEmailDto, MemberLoginDto, MemberLogoutDto } from './dto/users.dto';
 
@@ -17,8 +17,8 @@ export class UsersService {
     // console.log(query);
     return this.dataSource
     .query(query)
-    .then((result: any) => returnMessage.success(result))
-    .catch((error: any) => returnMessage.errorFromDatabase(error));
+    .then((result: any) => ReturnMessage.success(result))
+    .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
   async memberLoginByEmail(memberLoginByEmailDto: MemberLoginByEmailDto) {
     const query = `CALL c_member_login_by_email(
@@ -30,8 +30,8 @@ export class UsersService {
     );`;
     return this.dataSource
       .query(query)
-      .then((result: any) => returnMessage.success(result))
-      .catch((error: any) => returnMessage.errorFromDatabase(error));
+      .then((result: any) => ReturnMessage.success(result))
+      .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
   async memberLogout(memberLogoutDto: MemberLogoutDto) {
     const query = `CALL c_member_logout(
@@ -41,11 +41,11 @@ export class UsersService {
     );`;
     return this.dataSource
       .query(query)
-      .then((result: any) => returnMessage.success(result))
-      .catch((error: any) => returnMessage.errorFromDatabase(error));
+      .then((result: any) => ReturnMessage.success(result))
+      .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
   async createCustomer(createCustomerDto: CreateCustomerDto) {
-    console.log(createCustomerDto);
+    console.log(createCustomerDto,' tesssss5555');
     
     // const query = `CALL c_create_customer(
     //     null,
@@ -53,7 +53,7 @@ export class UsersService {
     // );`;
     // return this.dataSource
     //   .query(query)
-    //   .then((result: any) => returnMessage.success(result))
-    //   .catch((error: any) => returnMessage.errorFromDatabase(error));
+    //   .then((result: any) => ReturnMessage.success(result))
+    //   .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
 }

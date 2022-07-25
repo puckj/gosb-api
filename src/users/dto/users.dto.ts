@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsOptional,IsNumber } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional, IsEmail, IsNumber, NotEquals, ValidateIf } from 'class-validator';
 
 export class MemberLoginDto {
   @IsString()
@@ -41,62 +41,55 @@ export class CreateCustomerDto {
 
     @IsString()
     @IsNotEmpty()
-    password: string
+    encrypted_password: string
 
     @IsString()
-    @IsOptional()
+    // @IsOptional(null)
+    @ValidateIf((object: any, value: any) => value !== null)
     birthday: string | null
 
     @IsString()
     @IsNotEmpty()
+    @IsEmail()
     email: string
 
-    @IsString()
-    @IsOptional()
-    citizen_id: string | null
+    // @IsString()
+    // @ValidateIf((object: any, value: any) => value !== null)
+    // citizen_id: string | null
 
-    @IsNumber()
-    @IsOptional()
-    gender_id: number | null
+    // @IsNumber()
+    // @ValidateIf((object: any, value: any) => value !== null)
+    // gender_id: number | null
 
-    @IsString()
-    @IsOptional()
-    line_id: string | null
+    // @IsString()
+    // line_id: string | null
 
-    @IsString()
-    @IsOptional()
-    th_name: string | null
+    // @IsString()
+    // th_name: string | null
     
-    @IsString()
-    @IsOptional()
-    th_first_name: string | null
+    // @IsString()
+    // th_first_name: string | null
 
-    @IsString()
-    @IsOptional()
-    th_mid_name: string | null
+    // @IsString()
+    // th_mid_name: string | null
 
-    @IsString()
-    @IsOptional()
-    th_last_name: string | null
+    // @IsString()
+    // th_last_name: string | null
 
-    @IsString()
-    @IsOptional()
-    en_name: string | null
+    // @IsString()
+    // en_name: string | null
 
-    @IsString()
-    @IsOptional()
-    en_first_name: string | null
+    // @IsString()
+    // en_first_name: string | null
 
-    @IsString()
-    @IsOptional()
-    en_mid_name: string | null
+    // @IsString()
+    // en_mid_name: string | null
 
-    @IsString()
-    @IsOptional()
-    en_last_name: string | null
+    // @IsString()
+    // en_last_name: string | null
 
-    @IsString()
-    @IsNotEmpty()
-    p_phone_number: string
+    // @IsString()
+    // @IsNotEmpty()
+    // p_phone_number: string
 }
   

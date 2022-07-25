@@ -1,4 +1,4 @@
-class returnMessages {
+class ReturnMessages {
   async success(result: any) {
     const message = {
       statusCode: 200,
@@ -16,5 +16,5 @@ class returnMessages {
     return message;
   }
 }
-const returnMessage = new returnMessages();
-export default returnMessage;
+const ReturnMessage = new ReturnMessages();
+export default ReturnMessage;
