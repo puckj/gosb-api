@@ -3,9 +3,9 @@ import {
   IsString,
   IsOptional,
   IsEmail,
-  IsNumber,
-  ValidateIf,
+  IsDateString
 } from 'class-validator';
+import {IsNullable} from '../../functions/CustomDecorator'
 
 export class MemberLoginDto {
   @IsString()
@@ -50,9 +50,9 @@ export class CreateCustomerDto {
   @IsNotEmpty()
   encrypted_password: string;
 
-  @IsString()
-  // @IsOptional(null)
-  @ValidateIf((object: any, value: any) => value !== null)
+
+  @IsDateString()
+  @IsNullable()
   birthday: string | null;
 
   @IsString()
@@ -60,9 +60,8 @@ export class CreateCustomerDto {
   @IsEmail()
   email: string;
 
-  // @IsString()
-  // @ValidateIf((object: any, value: any) => value !== null)
-  // citizen_id: string | null
+//   @IsString()
+//   citizen_id: string | null
 
   // @IsNumber()
   // @ValidateIf((object: any, value: any) => value !== null)
