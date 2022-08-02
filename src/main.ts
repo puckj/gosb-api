@@ -60,6 +60,7 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       exceptionFactory: (validationErrors: ValidationError[] = []) => {
+        console.error(validationErrors);
         logger.error(validationErrors);
         // console.error(validationErrors);
         return new BadRequestException(validationErrors);

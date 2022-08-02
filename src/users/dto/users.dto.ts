@@ -3,7 +3,9 @@ import {
   IsString,
   IsOptional,
   IsEmail,
-  IsDateString
+  IsDateString,
+  NotEquals,
+  IsNumber
 } from 'class-validator';
 import {IsNullable} from '../../functions/CustomDecorator'
 
@@ -53,6 +55,7 @@ export class CreateCustomerDto {
 
   @IsDateString()
   @IsNullable()
+  @NotEquals(undefined)
   birthday: string | null;
 
   @IsString()
@@ -60,41 +63,62 @@ export class CreateCustomerDto {
   @IsEmail()
   email: string;
 
-//   @IsString()
-//   citizen_id: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  citizen_id: string | null
 
-  // @IsNumber()
-  // @ValidateIf((object: any, value: any) => value !== null)
-  // gender_id: number | null
+  @IsNumber()
+  @IsNullable()
+  @NotEquals(undefined)
+  gender_id: number | null
 
-  // @IsString()
-  // line_id: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  line_id: string | null
 
-  // @IsString()
-  // th_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  th_name: string | null
 
-  // @IsString()
-  // th_first_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  th_first_name: string | null
 
-  // @IsString()
-  // th_mid_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  th_mid_name: string | null
 
-  // @IsString()
-  // th_last_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  th_last_name: string | null
 
-  // @IsString()
-  // en_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  en_name: string | null
 
-  // @IsString()
-  // en_first_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  en_first_name: string | null
 
-  // @IsString()
-  // en_mid_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  en_mid_name: string | null
 
-  // @IsString()
-  // en_last_name: string | null
+  @IsString()
+  @IsNullable()
+  @NotEquals(undefined)
+  en_last_name: string | null
 
-  // @IsString()
-  // @IsNotEmpty()
-  // p_phone_number: string
+  @IsString()
+  @IsNotEmpty()
+  p_phone_number: string
 }
