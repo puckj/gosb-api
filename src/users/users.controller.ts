@@ -5,6 +5,7 @@ import {
   MemberLoginByEmailDto,
   MemberLogoutDto,
   CreateCustomerDto,
+  GetMemberProfileDto,
 } from './dto/users.dto';
 
 @Controller('users')
@@ -29,5 +30,10 @@ export class UsersController {
   @Post('/createCustomer')
   createCustomer(@Body() createCustomerDto: CreateCustomerDto) {
     return this.usersService.createCustomer(createCustomerDto);
+  }
+  
+  @Post('/getMemberProfile')
+  getMemberProfile(@Body() getMemberProfileDto: GetMemberProfileDto){
+    return this.usersService.getMemberProfile(getMemberProfileDto)
   }
 }

@@ -122,3 +122,9 @@ export class CreateCustomerDto {
   @IsNotEmpty()
   p_phone_number: string
 }
+
+export class GetMemberProfileDto {
+    @IsString()
+    @IsNotEmpty()
+    member_ukey: string
+}

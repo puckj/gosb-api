@@ -3,14 +3,20 @@ import ReturnMessage from '../functions/ReturnMessage';
 import { DataSource } from 'typeorm';
 import {
   CreateCustomerDto,
+  GetMemberProfileDto,
   MemberLoginByEmailDto,
   MemberLoginDto,
   MemberLogoutDto,
 } from './dto/users.dto';
+import { AuthService } from '../auth/auth.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly dataSource: DataSource) {}
+  constructor(
+    private readonly dataSource: DataSource,
+    private readonly authService: AuthService
+    ) {}
+
   async memberLogin(memberLoginDto: MemberLoginDto) {
     const query = `CALL c_member_login(
         '${memberLoginDto.p_username}',
@@ -25,6 +31,7 @@ export class UsersService {
       .then((result: any) => ReturnMessage.success(result))
       .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
+
   async memberLoginByEmail(memberLoginByEmailDto: MemberLoginByEmailDto) {
     const query = `CALL c_member_login_by_email(
         '${memberLoginByEmailDto.email}',
@@ -38,6 +45,7 @@ export class UsersService {
       .then((result: any) => ReturnMessage.success(result))
       .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
+
   async memberLogout(memberLogoutDto: MemberLogoutDto) {
     const query = `CALL c_member_logout(
         '${memberLogoutDto.member_ukey}',
@@ -49,6 +57,7 @@ export class UsersService {
       .then((result: any) => ReturnMessage.success(result))
       .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
+
   async createCustomer(createCustomerDto: CreateCustomerDto) {
     console.log(createCustomerDto, ' TESSSSST');
     const query = `CALL c_create_customer(
@@ -75,5 +84,21 @@ export class UsersService {
       .query(query)
       .then((result: any) => ReturnMessage.success(result))
       .catch((error: any) => ReturnMessage.errorFromDatabase(error));
+  }
+
+  async getMemberProfile(getMemberProfileDto:GetMemberProfileDto){
+    try {
+        const memberId = await this.authService.memberAuthen(getMemberProfileDto.member_ukey)
+        console.log(memberId,'resultTEST');
+        const query = `SELECT * FROM c_get_member_profile('${memberId}');`;
+        return this.dataSource
+          .query(query)
+          .then((result: any) => ReturnMessage.success(result))
+          .catch((error: any) => ReturnMessage.errorFromDatabase(error));
+        // return ReturnMessage.success(result)
+    } catch (error) {
+        console.error(error, ' GOT ERROR');
+        return ReturnMessage.errorFromDatabase(error)
+    }
   }
 }
