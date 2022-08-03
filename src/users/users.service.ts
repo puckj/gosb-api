@@ -14,8 +14,8 @@ import { AuthService } from '../auth/auth.service';
 export class UsersService {
   constructor(
     private readonly dataSource: DataSource,
-    private readonly authService: AuthService
-    ) {}
+    private readonly authService: AuthService,
+  ) {}
 
   async memberLogin(memberLoginDto: MemberLoginDto) {
     const query = `CALL c_member_login(
@@ -86,19 +86,21 @@ export class UsersService {
       .catch((error: any) => ReturnMessage.errorFromDatabase(error));
   }
 
-  async getMemberProfile(getMemberProfileDto:GetMemberProfileDto){
+  async getMemberProfile(getMemberProfileDto: GetMemberProfileDto) {
     try {
-        const memberId = await this.authService.memberAuthen(getMemberProfileDto.member_ukey)
-        console.log(memberId,'resultTEST');
-        const query = `SELECT * FROM c_get_member_profile('${memberId}');`;
-        return this.dataSource
-          .query(query)
-          .then((result: any) => ReturnMessage.success(result))
-          .catch((error: any) => ReturnMessage.errorFromDatabase(error));
-        // return ReturnMessage.success(result)
+      const memberId = await this.authService.memberAuthen(
+        getMemberProfileDto.member_ukey,
+      );
+      console.log(memberId, 'resultTEST');
+      const query = `SELECT * FROM c_get_member_profile('${memberId}');`;
+      return this.dataSource
+        .query(query)
+        .then((result: any) => ReturnMessage.success(result))
+        .catch((error: any) => ReturnMessage.errorFromDatabase(error));
+      // return ReturnMessage.success(result)
     } catch (error) {
-        console.error(error, ' GOT ERROR');
-        return ReturnMessage.errorFromDatabase(error)
+      console.error(error, ' GOT ERROR');
+      return ReturnMessage.errorFromDatabase(error);
     }
   }
 }

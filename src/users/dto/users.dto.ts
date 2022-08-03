@@ -5,9 +5,9 @@ import {
   IsEmail,
   IsDateString,
   NotEquals,
-  IsNumber
+  IsNumber,
 } from 'class-validator';
-import {IsNullable} from '../../functions/CustomDecorator'
+import { IsNullable } from '../../functions/CustomDecorator';
 
 export class MemberLoginDto {
   @IsString()
@@ -52,7 +52,6 @@ export class CreateCustomerDto {
   @IsNotEmpty()
   encrypted_password: string;
 
-
   @IsDateString()
   @IsNullable()
   @NotEquals(undefined)
@@ -66,65 +65,65 @@ export class CreateCustomerDto {
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  citizen_id: string | null
+  citizen_id: string | null;
 
   @IsNumber()
   @IsNullable()
   @NotEquals(undefined)
-  gender_id: number | null
+  gender_id: number | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  line_id: string | null
+  line_id: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  th_name: string | null
+  th_name: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  th_first_name: string | null
+  th_first_name: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  th_mid_name: string | null
+  th_mid_name: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  th_last_name: string | null
+  th_last_name: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  en_name: string | null
+  en_name: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  en_first_name: string | null
+  en_first_name: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  en_mid_name: string | null
+  en_mid_name: string | null;
 
   @IsString()
   @IsNullable()
   @NotEquals(undefined)
-  en_last_name: string | null
+  en_last_name: string | null;
 
   @IsString()
   @IsNotEmpty()
-  p_phone_number: string
+  p_phone_number: string;
 }
 
 export class GetMemberProfileDto {
-    @IsString()
-    @IsNotEmpty()
-    member_ukey: string
+  @IsString()
+  @IsNotEmpty()
+  member_ukey: string;
 }

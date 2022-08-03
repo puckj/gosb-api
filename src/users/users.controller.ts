@@ -31,9 +31,9 @@ export class UsersController {
   createCustomer(@Body() createCustomerDto: CreateCustomerDto) {
     return this.usersService.createCustomer(createCustomerDto);
   }
-  
+
   @Post('/getMemberProfile')
-  getMemberProfile(@Body() getMemberProfileDto: GetMemberProfileDto){
-    return this.usersService.getMemberProfile(getMemberProfileDto)
+  getMemberProfile(@Body() getMemberProfileDto: GetMemberProfileDto) {
+    return this.usersService.getMemberProfile(getMemberProfileDto);
   }
 }
