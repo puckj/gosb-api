@@ -25,7 +25,7 @@ export class UsersService {
         null,
         null
     );`;
-    // console.log(query);
+    // console.log(query,'tesstt');
     return this.dataSource
       .query(query)
       .then((result: any) => ReturnMessage.success(result))
