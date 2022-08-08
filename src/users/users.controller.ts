@@ -7,7 +7,10 @@ import {
   CreateCustomerDto,
   GetMemberProfileDto,
 } from './dto/users.dto';
+import { ApiTags, ApiSecurity } from '@nestjs/swagger';
 
+@ApiTags('users')
+@ApiSecurity('access-key')
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
