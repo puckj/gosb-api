@@ -7,9 +7,9 @@ import {
   IsNumber,
 } from 'class-validator';
 import { IsNullable } from '../../functions/CustomDecorator';
-import { 
-    ApiProperty,
-    // ApiHideProperty 
+import {
+  ApiProperty,
+  // ApiHideProperty
 } from '@nestjs/swagger';
 
 export class MemberLoginDto {
@@ -21,7 +21,7 @@ export class MemberLoginDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-//   @ApiHideProperty()
+  //   @ApiHideProperty()
   encrypted_password: string;
 
   @IsString()
@@ -40,7 +40,7 @@ export class MemberLoginByEmailDto {
   @IsString()
   @IsNotEmpty()
   @ApiProperty()
-//   @ApiHideProperty()
+  //   @ApiHideProperty()
   encrypted_password: string;
 
   @IsString()

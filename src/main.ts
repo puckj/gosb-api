@@ -70,19 +70,21 @@ async function bootstrap() {
   );
 
   const config = new DocumentBuilder()
-  .setTitle('gosb-api')
-  .setDescription('gosb-api document')
-  .setVersion('1.0')
-//   .addTag('gosb')
-  .addApiKey({
-    type: 'apiKey', // this should be apiKey
-    name: 'apiKey', // this is the name of the key you expect in header
-    in: 'header',
-   }, 'access-key' // this is the name to show and used in swagger
-  ) 
-  .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup('api/doc', app, document);
+    .setTitle('gosb-api')
+    .setDescription('gosb-api document')
+    .setVersion('1.0')
+    //   .addTag('gosb')
+    .addApiKey(
+      {
+        type: 'apiKey', // this should be apiKey
+        name: 'apiKey', // this is the name of the key you expect in header
+        in: 'header',
+      },
+      'access-key', // this is the name to show and used in swagger
+    )
+    .build();
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api/doc', app, document);
 
   await app.listen(port, () => {
     console.log(`Server listening on port : ${port}`);
