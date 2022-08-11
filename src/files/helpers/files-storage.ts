@@ -3,7 +3,14 @@ import path = require('path');
 import Generator from '../../functions/Generator';
 let fs = require('fs-extra');
 
-export const saveFileToStorage = {
+type validMimeType = 'image/png' | 'image/jpg' | 'image/jpeg';
+const validMimeTypes: validMimeType[] = [
+  'image/png',
+  'image/jpg',
+  'image/jpeg',
+];
+
+export const saveImageToStorage = {
     storage: diskStorage({
       destination: async (req, file, cb) => {
         let d = new Date(),
@@ -13,7 +20,6 @@ export const saveFileToStorage = {
         if (month.length < 2) month = '0' + month;
         if (day.length < 2) day = '0' + day;
         const dir = `./public/DELIVERY/IMAGE/${year}/${month}/${day}`
-        // console.log(dir,'destination');
         fs.mkdirsSync(dir);
         cb(null, dir);
       },
@@ -24,4 +30,8 @@ export const saveFileToStorage = {
         cb(null, fileName);
       },
     }),
+    fileFilter: (req, file, cb) => {
+        const allowedMimeTypes: validMimeType[] = validMimeTypes;
+        allowedMimeTypes.includes(file.mimetype) ? cb(null, true) : cb(null, false);
+    },
   };
