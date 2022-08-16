@@ -5,6 +5,7 @@ import { UsersModule } from './users/users.module';
 import { AuthMiddleware } from 'src/middleware/auth.middleware';
 import { AuthModule } from './auth/auth.module';
 import { LoggerMiddleware } from './middleware/logger.middleware';
+import { FilesModule } from './files/files.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { LoggerMiddleware } from './middleware/logger.middleware';
     }),
     UsersModule,
     AuthModule,
+    FilesModule,
   ],
 })
 export class AppModule {
