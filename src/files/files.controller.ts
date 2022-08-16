@@ -1,9 +1,10 @@
-import { Controller,Post,Request,UploadedFile } from '@nestjs/common';
+import { Controller,Body,Post,Request,UploadedFile } from '@nestjs/common';
 import { ApiTags, ApiSecurity } from '@nestjs/swagger';
 import { FilesService } from './files.service';
 import { saveImageToStorage } from './helpers/files-storage';
 import { ApiFile } from './helpers/api-file.decorator';
 import { ParseFile } from './helpers/parse-file.pipe';
+import { DownloadImageDto } from './dto/files.dto';
 
 @ApiTags('files')
 @ApiSecurity('access-key')
@@ -15,10 +16,12 @@ export class FilesController {
     @ApiFile('image_file',saveImageToStorage)
     uploadImage(
       @UploadedFile(ParseFile) file: Express.Multer.File,
-    //   @UploadedFile() file: Express.Multer.File,
-      @Request() req
     ) {
-    //   console.log(req,' req');
-      console.log(file,' file test');
+        return this.filesService.uploadImage(file)
+    }
+
+    @Post('downloadImage')
+    downloadImage(@Body() downloadImageDto:DownloadImageDto){
+        return this.filesService.downloadImage(downloadImageDto)
     }
 }

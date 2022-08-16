@@ -24,9 +24,10 @@ export const saveImageToStorage = {
         cb(null, dir);
       },
       filename: async (req, file, cb) => {
-        const fileExtension: string = path.extname(file.originalname);
+        // const fileExtension: string = path.extname(file.originalname);
         const generatedName = await Generator.generateCharacter(32)
-        const fileName: string = 'img_' + generatedName + fileExtension;
+        // const fileName: string = 'img_' + generatedName + fileExtension;
+        const fileName: string = 'img_' + generatedName;
         cb(null, fileName);
       },
     }),
