@@ -2,7 +2,7 @@
 import { diskStorage } from 'multer';
 // import path = require('path');
 import Generator from '../../functions/Generator';
-import fs from 'fs-extra';
+const fs = require('fs-extra')
 
 type validMimeType = 'image/png' | 'image/jpg' | 'image/jpeg';
 const validMimeTypes: validMimeType[] = [
