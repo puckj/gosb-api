@@ -91,7 +91,6 @@ export class UsersService {
       const memberId = await this.authService.memberAuthen(
         getMemberProfileDto.member_ukey,
       );
-      console.log(memberId, 'resultTEST');
       const query = `SELECT * FROM c_get_member_profile('${memberId}');`;
       return this.dataSource
         .query(query)
