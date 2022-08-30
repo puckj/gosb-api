@@ -7,7 +7,8 @@ import {
   CreateCustomerDto,
   GetMemberProfileDto,
 } from './dto/users.dto';
-import { ApiTags, ApiSecurity } from '@nestjs/swagger';
+import UpdateMemberProfileDto from './dto/update-member-profile.dto';
+import { ApiTags, ApiSecurity,ApiOperation } from '@nestjs/swagger';
 
 @ApiTags('users')
 @ApiSecurity('access-key')
@@ -38,5 +39,11 @@ export class UsersController {
   @Post('/getMemberProfile')
   getMemberProfile(@Body() getMemberProfileDto: GetMemberProfileDto) {
     return this.usersService.getMemberProfile(getMemberProfileDto);
+  }
+
+  @ApiOperation({tags: ['shi']})
+  @Post('/updateMemberProfile')
+  updateMemberProfile(@Body() updateMemberProfileDto:UpdateMemberProfileDto){
+    return this.usersService.updateMemberProfile(updateMemberProfileDto)
   }
 }
