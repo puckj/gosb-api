@@ -7,7 +7,7 @@ import {
   IsNumber,
 } from 'class-validator';
 import { IsNullable } from '../../functions/CustomDecorator';
-import {ApiProperty} from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class MemberLoginDto {
   @IsString()

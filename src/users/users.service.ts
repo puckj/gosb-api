@@ -104,7 +104,7 @@ export class UsersService {
     }
   }
 
-  async updateMemberProfile(updateMemberProfileDto : UpdateMemberProfileDto) {
+  async updateMemberProfile(updateMemberProfileDto: UpdateMemberProfileDto) {
     try {
       const memberId = await this.authService.memberAuthen(
         updateMemberProfileDto.member_ukey,
@@ -121,10 +121,16 @@ export class UsersService {
        NULLIF('${updateMemberProfileDto.p_gender_id}','null')::INTEGER,
        NULLIF('${JSON.stringify(updateMemberProfileDto.name)}','null')::JSON,
        NULLIF('${JSON.stringify(updateMemberProfileDto.phones)}','null')::JSON,
-       NULLIF('${JSON.stringify(updateMemberProfileDto.bank_accounts)}','null')::JSON,
-       NULLIF('${JSON.stringify(updateMemberProfileDto.addresses)}','null')::JSON,
+       NULLIF('${JSON.stringify(
+         updateMemberProfileDto.bank_accounts,
+       )}','null')::JSON,
+       NULLIF('${JSON.stringify(
+         updateMemberProfileDto.addresses,
+       )}','null')::JSON,
        NULLIF('${JSON.stringify(updateMemberProfileDto.images)}','null')::JSON,
-       NULLIF('${JSON.stringify(updateMemberProfileDto.member_role)}','null')::JSON,
+       NULLIF('${JSON.stringify(
+         updateMemberProfileDto.member_role,
+       )}','null')::JSON,
        null,
        null
    );`;
