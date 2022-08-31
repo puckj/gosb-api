@@ -7,3 +7,14 @@ export class DownloadImageDto {
   @ApiProperty()
   img_path: string;
 }
+
+export class RemoveImageDto{
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  member_ukey:string
+  @IsString()
+  @IsNotEmpty()
+  @ApiProperty()
+  img_path:string
+}

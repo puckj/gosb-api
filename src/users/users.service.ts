@@ -109,8 +109,8 @@ export class UsersService {
       const memberId = await this.authService.memberAuthen(
         updateMemberProfileDto.member_ukey,
       );
-      console.log(updateMemberProfileDto, 'updateMemberProfileDto ####');
-      console.log(memberId, 'memberId ####');
+    //   console.log(updateMemberProfileDto, 'updateMemberProfileDto ####');
+    //   console.log(memberId, 'memberId ####');
       const query = `CALL c_update_member_profile(
        NULLIF('${memberId}','null'),
        NULLIF('${updateMemberProfileDto.p_username}','null'),

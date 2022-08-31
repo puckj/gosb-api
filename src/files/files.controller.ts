@@ -4,7 +4,7 @@ import { FilesService } from './files.service';
 import { saveImageToStorage } from './helpers/files-storage';
 import { ApiFile } from './helpers/api-file.decorator';
 import { ParseFile } from './helpers/parse-file.pipe';
-import { DownloadImageDto } from './dto/files.dto';
+import { DownloadImageDto, RemoveImageDto } from './dto/files.dto';
 
 @ApiTags('files')
 @ApiSecurity('access-key')
@@ -21,5 +21,10 @@ export class FilesController {
   @Post('downloadImage')
   downloadImage(@Body() downloadImageDto: DownloadImageDto) {
     return this.filesService.downloadImage(downloadImageDto);
+  }
+
+  @Post('removeImage')
+  removeImage(@Body() removeImageDto:RemoveImageDto){
+    return this.filesService.removeImage(removeImageDto)
   }
 }
