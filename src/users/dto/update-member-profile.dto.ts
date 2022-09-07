@@ -187,7 +187,8 @@ export default class UpdateMemberProfileDto {
   @ApiProperty({ type: [UpdateMemberProfileDto_Images], nullable: true })
   @Type(() => UpdateMemberProfileDto_Images)
   images: UpdateMemberProfileDto_Images[];
-  @IsNotEmpty()
+  @NotEquals(undefined)
+  @IsNullable()
   @IsArray()
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
