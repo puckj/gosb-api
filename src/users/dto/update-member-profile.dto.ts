@@ -192,7 +192,7 @@ export default class UpdateMemberProfileDto {
   @IsArray()
   @ArrayMinSize(1)
   @ValidateNested({ each: true })
-  @ApiProperty({ type: [UpdateMemberProfileDto_MemberRole] })
+  @ApiProperty({ type: [UpdateMemberProfileDto_MemberRole], nullable: true })
   @Type(() => UpdateMemberProfileDto_MemberRole)
   member_role: UpdateMemberProfileDto_MemberRole;
 }
