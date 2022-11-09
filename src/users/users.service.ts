@@ -10,6 +10,7 @@ import {
 } from './dto/users.dto';
 import UpdateMemberProfileDto from './dto/update-member-profile.dto';
 import { AuthService } from '../auth/auth.service';
+import MemberChangePasswordDto from './dto/member-change-password.dto';
 
 @Injectable()
 export class UsersService {
@@ -142,6 +143,27 @@ export class UsersService {
     } catch (error) {
       console.error(error, ' GOT ERROR');
       return ReturnMessage.errorFromDatabase(error);
+    }
+  }
+
+  async memberChangePassword(memberChangePasswordDto: MemberChangePasswordDto) {
+    try {
+        console.log('memberChangePasswordDto', memberChangePasswordDto);
+        const query = `CALL c_member_change_password(
+        '${memberChangePasswordDto.member_ukey}',
+        '${memberChangePasswordDto.encrypted_old_password}',
+        '${memberChangePasswordDto.encrypted_new_password}',
+        NULLIF('${memberChangePasswordDto.p_fcm_regist_token}','null'),
+        null,
+        null
+       );`;
+       return this.dataSource
+         .query(query)
+         .then((result: any) => ReturnMessage.success(result))
+         .catch((error: any) => ReturnMessage.errorFromDatabase(error));
+    } catch (error) {
+        console.error(error, ' GOT ERROR');
+        return ReturnMessage.errorFromDatabase(error);
     }
   }
 }

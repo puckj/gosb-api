@@ -16,7 +16,11 @@ export class FilesService {
   async uploadImage(file: Express.Multer.File) {
     try {
       console.log(file,'uploadImage (service)');
-      const result = [file];
+      const result = [{
+        full_path: file.path,
+        image_path: file.destination + '/',
+        image_name: file.filename
+      }];
       return ReturnMessage.success(result);
     } catch (error) {
       return ReturnMessage.errorFromDatabase(error);

@@ -9,6 +9,7 @@ import {
 } from './dto/users.dto';
 import UpdateMemberProfileDto from './dto/update-member-profile.dto';
 import { ApiTags, ApiSecurity } from '@nestjs/swagger';
+import MemberChangePasswordDto from './dto/member-change-password.dto';
 
 @ApiTags('users')
 @ApiSecurity('access-key')
@@ -44,5 +45,10 @@ export class UsersController {
   @Post('/updateMemberProfile')
   updateMemberProfile(@Body() updateMemberProfileDto: UpdateMemberProfileDto) {
     return this.usersService.updateMemberProfile(updateMemberProfileDto);
+  }
+
+  @Post('/memberChangePassword')
+  memberChangePassword(@Body() memberChangePasswordDto: MemberChangePasswordDto){
+    return this.usersService.memberChangePassword(memberChangePasswordDto)
   }
 }

@@ -30,8 +30,9 @@ class UpdateMemberProfileDto_Name {
   @ApiProperty({ nullable: true })
   nickname: string | null;
   @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
+  @NotEquals(undefined)
+  @IsNullable()
+  @ApiProperty({ nullable: true })
   first_name: string;
   @IsString()
   @NotEquals(undefined)
@@ -39,8 +40,9 @@ class UpdateMemberProfileDto_Name {
   @ApiProperty({ nullable: true })
   mid_name: string | null;
   @IsString()
-  @IsNotEmpty()
-  @ApiProperty()
+  @NotEquals(undefined)
+  @IsNullable()
+  @ApiProperty({ nullable: true })
   last_name: string;
   @IsString()
   @NotEquals(undefined)
